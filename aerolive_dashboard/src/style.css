@@ -1,0 +1,209 @@
+:root {
+  /* Theme colors */
+  --color-primary: #000000;
+  --color-secondary: #1a1a1a;
+  --color-accent: #2b5ef7;
+  --color-bg: var(--color-primary);
+  --color-surface: var(--color-secondary);
+  --color-text: #fff;
+  --color-footer: #161616;
+
+  /* Layout spacing */
+  --navbar-height: 3.5rem;
+  --footer-height: 2.5rem;
+  --sidebar-width: 220px;
+  --sidebar-width-collapsed: 64px;
+}
+
+/* Global resets and base layer */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100%;
+  height: 100%;
+}
+
+#app,
+.dashboard-root {
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* Navbar styles */
+.dashboard-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 0 1rem;
+  border-bottom: 2px solid var(--color-accent);
+  z-index: 10;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.dashboard-content {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  background: var(--color-bg);
+}
+
+/* Sidebar styles */
+.dashboard-sidebar {
+  background: var(--color-surface);
+  color: var(--color-text);
+  min-width: var(--sidebar-width);
+  max-width: var(--sidebar-width);
+  width: var(--sidebar-width);
+  padding: 1.2rem 0.5rem 1.2rem 1rem;
+  border-right: 1.5px solid #202020;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.sidebar-menu li {
+  padding: 0.6rem 1rem 0.6rem 0.2rem;
+  border-radius: 5px;
+  transition: background 0.18s;
+  cursor: pointer;
+}
+.sidebar-menu li:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Map area */
+.dashboard-map-area {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  background: var(--color-bg);
+  align-items: center;
+  justify-content: center;
+  padding: 1.3rem 0.7rem;
+}
+
+/* Placeholder for map area */
+.map-placeholder {
+  width: 100%;
+  min-height: 420px;
+  background: #222;
+  border-radius: 16px;
+  border: 1.5px solid #363c4b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #d2d6f7;
+  letter-spacing: 0.07em;
+  font-weight: bold;
+  box-shadow: 0 3px 28px 0 rgba(43, 94, 247, 0.05);
+}
+  
+/* Footer */
+.dashboard-footer {
+  background: var(--color-footer);
+  color: var(--color-accent);
+  text-align: center;
+  padding: 0 1rem;
+  height: var(--footer-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.97rem;
+  border-top: 1.5px solid #232a33;
+}
+
+@media (max-width: 700px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+  .dashboard-sidebar {
+    flex-direction: row;
+    min-width: 100%;
+    max-width: 100vw;
+    width: 100vw;
+    padding: 0.7rem 0.3rem;
+    border-right: none;
+    border-bottom: 1.5px solid #202020;
+  }
+  .sidebar-menu {
+    flex-direction: row;
+    gap: 1rem;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .sidebar-menu li {
+    padding: 0.5rem 0.8rem;
+    font-size: 1em;
+    min-width: 60px;
+    text-align: center;
+  }
+  .dashboard-map-area {
+    padding: 1.5rem 0.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-navbar, .dashboard-footer {
+    font-size: 0.97rem;
+    padding: 0 0.6rem;
+  }
+  .sidebar-menu {
+    gap: 0.6rem;
+    font-size: 0.97em;
+  }
+  .map-placeholder {
+    font-size: 1em;
+    min-height: 280px;
+  }
+}
+
+/* Hide scrollbars (optional aesthetic for dark dashboards) */
+body, .dashboard-root, .dashboard-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) var(--color-surface);
+}
+
+/* Remove default outline for mouse (keep for keyboard with :focus-visible) */
+.sidebar-menu li:focus:not(:focus-visible) {
+  outline: none;
+}
